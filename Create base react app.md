@@ -117,6 +117,19 @@
        ],
      };
    ```
+   Теперь добавим в проект шаблонный HTML-файл и заготовку React-компонента.
+   ```html
+     <!DOCTYPE html>
+     <html lang="en">
+       <head>
+         <meta charset="UTF-8">
+         <title>React Boilerplate</title>
+       </head>
+       <body>
+         <div id="root"></div>
+       </body>
+     </html>
+   ```
    Добавляем в проект библиотеку Admiral
    ```
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
@@ -175,17 +188,4 @@
             }),
          ],
       };
-   ```
-   Теперь добавим в проект шаблонный HTML-файл и заготовку React-компонента.
-   ```html
-     <!DOCTYPE html>
-     <html lang="en">
-       <head>
-         <meta charset="UTF-8">
-         <title>React Boilerplate</title>
-       </head>
-       <body>
-         <div id="root"></div>
-       </body>
-     </html>
    ```
