@@ -175,6 +175,18 @@
        "build": "webpack --config config/webpack.build.js"
      }
    ```
+
+   Так как в конфигах `webpack'a` использовался путь `src`, создаём папку `src` и в ней файл `index.jsx` со следующим содержимым:
+   ```jsx
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      
+      ReactDOM.render(
+        <div>Hello</div>,
+        document.getElementById('common-app')
+      );
+
+   ```
    
    Добавляем в проект TypeScript
    ```
