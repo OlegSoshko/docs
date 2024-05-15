@@ -51,7 +51,7 @@
    ```
    Транспилятор Babel преобразует код, соответствующий стандартам ECMAScript 2015+, в код, который будет работать и в новых, и в устаревших браузерах. Babel, благодаря применению пресетов, используется и для обработки JSX-кода
    ```
-     npm install @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript --save-dev
+     npm install @babel/core @babel/preset-env @babel/preset-react --save-dev
    ```
    Вот как выглядит простая конфигурация Babel, предназначенная для подготовки к работе React-приложений. Эту конфигурацию можно добавить в файл .babelrc или в package.json:
    ```js
@@ -72,15 +72,14 @@
      const HtmlWebPackPlugin = require('html-webpack-plugin');
 
      module.exports = {
+       entry: path.resolve(__dirname, "../src", "index.jsx"),
+       target: ["web", "es5"],
        output: {
          path: path.resolve(__dirname, 'build'),
          filename: 'bundle.js',
        },
        resolve: {
-         modules: [path.join(__dirname, 'src'), 'node_modules'],
-         alias: {
-           react: path.join(__dirname, 'node_modules', 'react'),
-         },
+         extensions: ['.js', '.jsx', '.css']
        },
        module: {
          rules: [
@@ -94,13 +93,20 @@
            {
              test: /\.css$/,
              use: [
-               {
-                 loader: 'style-loader',
-               },
+               { loader: 'style-loader' },
                {
                  loader: 'css-loader',
+                 options: { sourceMap: true }
                },
              ],
+           },
+           {
+             test: /\.(woff|woff2|eot|ttf|otf)$/i,
+             type: 'asset/resource',
+             generator: {
+               emit: true,
+               filename: `static/fonts/[name][ext]`,
+             },
            },
          ],
        },
@@ -115,6 +121,60 @@
    ```
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
    npm install @svgr/webpack @types/styled-components url-loader --save-dev
+   ```
+   Делаем изменения в конфиге webpack для того чтобы Admiral работал правильно
+   ```
+      module.exports = {
+         entry: path.resolve(__dirname, "../src", "index.jsx"),
+         target: ["web", "es5"],
+         output: {
+            path: path.resolve(__dirname, 'build'),
+            filename: 'bundle.js',
+         },
+         resolve: {
+            extensions: ['.js', '.jsx', '.css']
+         },
+         module: {
+            rules: [
+               {
+                  test: /\.(js|jsx)$/,
+                  exclude: /node_modules/,
+                  use: {
+                     loader: 'babel-loader',
+                  },
+               },
+               {
+                  test: /\.css$/,
+                  use: [
+                     { loader: 'style-loader' },
+                     {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                     },
+                  ],
+               },
+               {
+                  test: /\.svg$/,
+                  use: ["@svgr/webpack", "url-loader"],
+                  type: "javascript/auto",
+                  issuer: /\.jsx?$/,
+               },
+               {
+                  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                  type: 'asset/resource',
+                  generator: {
+                     emit: true,
+                     filename: `static/fonts/[name][ext]`,
+                  },
+               },
+            ],
+         },
+         plugins: [
+            new HtmlWebPackPlugin({
+               template: './src/index.html',
+            }),
+         ],
+      };
    ```
    Теперь добавим в проект шаблонный HTML-файл и заготовку React-компонента.
    ```html
