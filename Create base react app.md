@@ -123,7 +123,7 @@
    npm install @svgr/webpack @types/styled-components url-loader --save-dev
    ```
    Делаем изменения в конфиге webpack для того чтобы Admiral работал правильно
-   ```
+   ```js
       module.exports = {
          entry: path.resolve(__dirname, "../src", "index.jsx"),
          target: ["web", "es5"],
