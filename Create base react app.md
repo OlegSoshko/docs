@@ -112,23 +112,23 @@
        },
        plugins: [
          new HtmlWebPackPlugin({
-           template: './src/index.html',
+            template: './public/index.html',
          }),
        ],
      };
    ```
-   Теперь добавим в проект шаблонный HTML-файл и заготовку React-компонента.
+   Теперь создадим в корне папку public и добавим в проект шаблонный index.html файл, со следующим содержимым:
    ```html
-     <!DOCTYPE html>
-     <html lang="en">
-       <head>
-         <meta charset="UTF-8">
-         <title>React Boilerplate</title>
-       </head>
-       <body>
-         <div id="root"></div>
-       </body>
-     </html>
+      <!DOCTYPE html>
+      <html lang="en">
+         <head>
+            <meta charset="UTF-8">
+            <title>React Boilerplate</title>
+         </head>
+         <body>
+            <div id="root"></div>
+         </body>
+      </html>
    ```
    Добавляем в проект библиотеку Admiral
    ```
