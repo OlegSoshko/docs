@@ -227,20 +227,24 @@
    ```
    Делаем изменения в конфиге webpack для того чтобы Admiral работал правильно(Добавляем загрузчик для svg)
    ```js
+      const path = require('path');
+      const HtmlWebPackPlugin = require('html-webpack-plugin');
+
       module.exports = {
-         entry: path.resolve(__dirname, "../src", "index.jsx"),
+         entry: path.resolve(__dirname, "../src", "index.tsx"),
          target: ["web", "es5"],
          output: {
+            publicPath: '/',
             path: path.resolve(__dirname, 'build'),
             filename: 'bundle.js',
          },
          resolve: {
-            extensions: ['.js', '.jsx', '.css']
+            extensions: ['.ts', '.tsx', '.js', '.jsx', '.css']
          },
          module: {
             rules: [
                {
-                  test: /\.(js|jsx)$/,
+                  test: /\.(j|t)sx?$/,
                   exclude: /node_modules/,
                   use: {
                      loader: 'babel-loader',
@@ -260,7 +264,7 @@
                   test: /\.svg$/,
                   use: ["@svgr/webpack", "url-loader"],
                   type: "javascript/auto",
-                  issuer: /\.jsx?$/,
+                  issuer: /\.(js|ts)x?$/,
                },
                {
                   test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -274,7 +278,7 @@
          },
          plugins: [
             new HtmlWebPackPlugin({
-               template: './src/index.html',
+               template: './public/index.html',
             }),
          ],
       };
