@@ -294,7 +294,7 @@
    ```
    Не забываем переименовать файлы `.jsx` -> `.tsx`, но можно и не переименовывать, это по желанию.
    
-   Добавляем в проект библиотеку Admiral
+   Добавляем в проект библиотеку Admiral(Хочу обратить внимание, у адмирала есть инструкция, как добавить его в проект)
    ```
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
    npm install @svgr/webpack @types/styled-components url-loader --save-dev
