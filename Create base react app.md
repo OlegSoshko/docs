@@ -292,6 +292,7 @@
          ]
       }
    ```
+   Не забываем переименовать файлы `.jsx` -> `.tsx`, но можно и не переименовывать, это по желанию.
    
    Добавляем в проект библиотеку Admiral
    ```
@@ -367,4 +368,25 @@
 
          export default src;
       }
+   ```
+   В проект надо будет добавить обвязку для Admiral'a, к примеру так:
+   ```tsx
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import { ThemeProvider } from 'styled-components';
+      import {
+        LIGHT_THEME,
+        FontsVTBGroup,
+        DropdownProvider,
+      } from '@admiral-ds/react-ui';
+      
+      ReactDOM.render(
+        <ThemeProvider theme={LIGHT_THEME}>
+          <DropdownProvider>
+            <FontsVTBGroup />
+            <div>Hello</div>
+          </DropdownProvider>
+        </ThemeProvider>,
+        document.getElementById('common-app')
+      );
    ```
