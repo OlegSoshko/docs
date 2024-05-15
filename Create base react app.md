@@ -168,6 +168,16 @@
    ```
    npm install typescript @types/react @types/react-dom --save-dev
    ```
+   Добавляем preset в babel:
+   ```js
+   {
+     "presets": [
+         "@babel/preset-env",
+         "@babel/preset-react",
+         "@babel/preset-typescript",
+     ]
+   }
+   ```
    Исправляем правила в конфиге webpack'a, необходимо включить файлы .ts и .tsx в загрузчики, поправить entry и extensions
    ```js
       const path = require('path');
