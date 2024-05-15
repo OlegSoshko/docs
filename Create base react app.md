@@ -135,7 +135,7 @@
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
    npm install @svgr/webpack @types/styled-components url-loader --save-dev
    ```
-   Делаем изменения в конфиге webpack для того чтобы Admiral работал правильно
+   Делаем изменения в конфиге webpack для того чтобы Admiral работал правильно(Добавляем загрузчик для svg)
    ```js
       module.exports = {
          entry: path.resolve(__dirname, "../src", "index.jsx"),
