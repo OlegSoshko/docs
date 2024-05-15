@@ -135,11 +135,19 @@
             host: 'localhost',
             historyApiFallback: true,
             port: 3000,
+            // Пример для dev-server 4
             proxy: {
-               "Тут ваши адреса апи": {
+               "Тут ваш адрес апи": {
                   target: domain,
                }
             },
+            // Пример для dev-server 5
+             proxy: [
+               {
+                 context: ['Тут ваш адрес апи'],
+                 target: domain,
+               },
+             ],
          },
       };
    ```
