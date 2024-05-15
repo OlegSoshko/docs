@@ -169,7 +169,7 @@
    ```
    
    Для запуска и билда, добавим в файлик `package.json` следующие скрипты:
-   ```
+   ```json
      "scripts": {
        "dev": "webpack serve --config config/webpack.dev.js --hot",
        "build": "webpack --config config/webpack.build.js"
