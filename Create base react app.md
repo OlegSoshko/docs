@@ -306,3 +306,15 @@
          ],
       };
    ```
+   Если в проекте используется `TypeScript`, то надо добавить файл types.d.ts, для того чтобы typescript не ругался на иконки svg, со следующим содержимым:
+   ```ts
+      declare module '*.svg' {
+         import * as React from 'react';
+
+         export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+
+         const src: string;
+
+         export default src;
+      }
+   ```
