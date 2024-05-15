@@ -164,6 +164,62 @@
          </body>
       </html>
    ```
+   Добавляем в проект TypeScript
+   ```
+   npm install typescript @types/react @types/react-dom --save-dev
+   ```
+   Исправляем правила в конфиге webpack'a, необходимо включить файлы .ts и .tsx в загрузчики, поправить entry и extensions
+   ```js
+      const path = require('path');
+      const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+      module.exports = {
+         entry: path.resolve(__dirname, "../src", "index.tsx"),
+         target: ["web", "es5"],
+         output: {
+            publicPath: '/',
+            path: path.resolve(__dirname, 'build'),
+            filename: 'bundle.js',
+         },
+         resolve: {
+            extensions: ['.ts', '.tsx', '.js', '.jsx', '.css']
+         },
+         module: {
+            rules: [
+               {
+                  test: /\.(j|t)sx?$/,
+                  exclude: /node_modules/,
+                  use: {
+                     loader: 'babel-loader',
+                  },
+               },
+               {
+                  test: /\.css$/,
+                  use: [
+                     { loader: 'style-loader' },
+                     {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                     },
+                  ],
+               },
+               {
+                  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                  type: 'asset/resource',
+                  generator: {
+                     emit: true,
+                     filename: `static/fonts/[name][ext]`,
+                  },
+               },
+            ],
+         },
+         plugins: [
+            new HtmlWebPackPlugin({
+               template: './public/index.html',
+            }),
+         ],
+      };
+   ```
    Добавляем в проект библиотеку Admiral
    ```
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
