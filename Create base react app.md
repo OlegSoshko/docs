@@ -122,7 +122,7 @@
      };
    ```
    - Простая конфигурация Webpack.dev, выглядит так, как показано ниже:
-   ```
+   ```js
       const path = require('path');
       const webpack = require('webpack');
       const common = require("./webpack.common");
@@ -144,7 +144,7 @@
       };
    ```
    - Простая конфигурация Webpack.build, выглядит так, как показано ниже:
-   ```
+   ```js
       const webpack = require('webpack');
       const common = require("./webpack.common");
 
