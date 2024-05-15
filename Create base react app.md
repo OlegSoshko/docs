@@ -111,6 +111,10 @@
        ],
      };
    ```
+   Добавляем в проект библиотеку Admiral
+   ```
+   npm install @admiral-ds/icons @admiral-ds/react-ui @svgr/webpack styled-components @types/styled-components url-loader
+   ```
    Теперь добавим в проект шаблонный HTML-файл и заготовку React-компонента.
    ```html
      <!DOCTYPE html>
