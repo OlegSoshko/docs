@@ -49,6 +49,7 @@
    ```
      npm install react react-dom --save
    ```
+   
    Транспилятор Babel преобразует код, соответствующий стандартам ECMAScript 2015+, в код, который будет работать и в новых, и в устаревших браузерах. Babel, благодаря применению пресетов, используется и для обработки JSX-кода
    ```
      npm install @babel/core @babel/preset-env @babel/preset-react --save-dev
@@ -62,6 +63,7 @@
      ]
    }
    ```
+   
    Бандлер Webpack отвечает за сборку проекта, формируя на основе кода проекта и кода его зависимостей единственный файл (бандл) приложения. При использовании таких техник оптимизации проектов, как разделение кода, в бандл приложения могут входить и несколько файлов.
    ```
      npm install webpack webpack-cli webpack-dev-server babel-loader css-loader style-loader html-webpack-plugin --save-dev
@@ -151,7 +153,8 @@
          mode: 'production',
       };
    ```
-   Теперь создадим в корне папку public и добавим в проект шаблонный index.html файл, со следующим содержимым:
+   
+   Теперь создадим в корне папку `public` и добавим в проект шаблонный `index.html` файл, со следующим содержимым:
    ```html
       <!DOCTYPE html>
       <html lang="en">
@@ -164,6 +167,7 @@
          </body>
       </html>
    ```
+   
    Для запуска и билда, добавим в файлик `package.json` следующие скрипты:
    ```
      "scripts": {
@@ -171,11 +175,12 @@
        "build": "webpack --config config/webpack.build.js"
      }
    ```
+   
    Добавляем в проект TypeScript
    ```
    npm install typescript @types/react @types/react-dom --save-dev
    ```
-   Добавляем preset в babel:
+   Добавляем preset в `.babelrc`:
    ```js
    {
      "presets": [
@@ -185,7 +190,7 @@
      ]
    }
    ```
-   Исправляем правила в конфиге webpack'a, необходимо включить файлы .ts и .tsx в загрузчики, поправить entry и extensions
+   Исправляем правила в конфиге webpack'a, необходимо включить файлы `.ts` и `.tsx` в загрузчики, поправить `entry` и `extensions`
    ```js
       const path = require('path');
       const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -237,6 +242,7 @@
          ],
       };
    ```
+   
    Добавляем в проект библиотеку Admiral
    ```
    npm install @admiral-ds/icons @admiral-ds/react-ui styled-components --save
