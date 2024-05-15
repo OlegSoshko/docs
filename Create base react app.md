@@ -180,7 +180,7 @@
    ```
    npm install typescript @types/react @types/react-dom --save-dev
    ```
-   Добавляем preset в `.babelrc`:
+   Исправляем preset в `.babelrc`:
    ```js
    {
      "presets": [
@@ -241,6 +241,44 @@
             }),
          ],
       };
+   ```
+   Добавляем файл-config `tsconfig.json` для `Typescript`. Я использую следующий конфи, но это не панацея, можно взять за основу и поправить под себя:
+   ```json
+      {
+         "compilerOptions": {
+            "rootDir": "src",
+            "outDir": "./build",
+            "baseUrl": "./src",
+            "target": "es5",
+            "lib": [
+               "dom",
+               "dom.iterable",
+               "esnext"
+            ],
+            "allowJs": true,
+            "skipLibCheck": true,
+            "esModuleInterop": true,
+            "allowSyntheticDefaultImports": true,
+            "strict": true,
+            "forceConsistentCasingInFileNames": true,
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "resolveJsonModule": true,
+            "isolatedModules": false,
+            "noEmit": true,
+            "jsx": "react"
+         },
+         "include": [
+            "src/**/*.ts",
+            "src/**/*.tsx",
+            "types.d.ts"
+         ],
+         "exclude": [
+            "node_modules",
+            "build",
+            "public"
+         ]
+      }
    ```
    
    Добавляем в проект библиотеку Admiral
