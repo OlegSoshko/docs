@@ -183,7 +183,7 @@
       
       ReactDOM.render(
         <div>Hello</div>,
-        document.getElementById('common-app')
+        document.getElementById('root')
       );
 
    ```
