@@ -66,7 +66,8 @@
    ```
      npm install webpack webpack-cli webpack-dev-server babel-loader css-loader style-loader html-webpack-plugin --save-dev
    ```
-   Простая конфигурация Webpack, предназначенная для сборки пакетов React-приложений, выглядит так, как показано ниже:
+   В корне создаём папку config и создаём три файла `webpack.common.js`, `webpack.dev.js`, `webpack.build.js`, тем самым мы разделим конфигурации для наших нужд.
+   - Простая конфигурация Webpack.common, выглядит так, как показано ниже:
    ```js
      const path = require('path');
      const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -75,6 +76,7 @@
        entry: path.resolve(__dirname, "../src", "index.jsx"),
        target: ["web", "es5"],
        output: {
+         publicPath: '/',
          path: path.resolve(__dirname, 'build'),
          filename: 'bundle.js',
        },
@@ -116,6 +118,38 @@
          }),
        ],
      };
+   ```
+   - Простая конфигурация Webpack.dev, выглядит так, как показано ниже:
+   ```
+      const path = require('path');
+      const webpack = require('webpack');
+      const common = require("./webpack.common");
+
+      module.exports = {
+         ...common,
+         mode: 'development',
+         devtool: 'eval-source-map',
+         devServer: {
+            host: 'localhost',
+            historyApiFallback: true,
+            port: 3000,
+            proxy: {
+               "Тут ваши адреса апи": {
+                  target: domain,
+               }
+            },
+         },
+      };
+   ```
+   - Простая конфигурация Webpack.build, выглядит так, как показано ниже:
+   ```
+      const webpack = require('webpack');
+      const common = require("./webpack.common");
+
+      module.exports = {
+         ...common,
+         mode: 'production',
+      };
    ```
    Теперь создадим в корне папку public и добавим в проект шаблонный index.html файл, со следующим содержимым:
    ```html
