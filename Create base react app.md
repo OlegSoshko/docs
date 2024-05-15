@@ -164,6 +164,13 @@
          </body>
       </html>
    ```
+   Для запуска и билда, добавим в файлик `package.json` следующие скрипты:
+   ```
+     "scripts": {
+       "dev": "webpack serve --config config/webpack.dev.js --hot",
+       "build": "webpack --config config/webpack.build.js"
+     }
+   ```
    Добавляем в проект TypeScript
    ```
    npm install typescript @types/react @types/react-dom --save-dev
