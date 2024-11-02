@@ -198,7 +198,7 @@
    
    Добавляем в проект TypeScript
    ```
-   npm install typescript @types/react @types/react-dom --save-dev
+   npm install typescript @types/react @types/react-dom @babel/preset-typescript --save-dev
    ```
    Исправляем preset в `.babelrc`:
    ```js
